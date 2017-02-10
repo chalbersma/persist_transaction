@@ -6,10 +6,8 @@ After=syslog.target network.target
 User=percy
 Group=percy
 Type=forking
-Environment=VIRTUAL_ENV=/var/percy/electrum
-Environment=PATH=$VIRTUAL_ENV/bin:$PATH
-ExecStart=$VIRTUAL_ENV/python electrum daemon start
-ExecStop=$VIRTUAL_ENV/python electrum daemon stop
+ExecStart=source /var/percy/electrum/bin/activate ; electrum daemon start
+ExecStop=source /var/percy/electrum/bin/activate ; electrum daemon stop
 Restart=always
 
 [Install]
