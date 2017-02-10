@@ -6,8 +6,8 @@ After=syslog.target network.target
 User=percy
 Group=percy
 Type=forking
-ExecStart=source /var/percy/electrum/bin/activate ; /var/percy/electrum/bin/electrum daemon start
-ExecStop=source /var/percy/electrum/bin/activate ; /var/percy/electrum/bin/electrum daemon stop
+ExecStart=/bin/bash -c "source /var/percy/electrum/bin/activate ; /var/percy/electrum/bin/electrum daemon start"
+ExecStop=/bin/bash -c "source /var/percy/electrum/bin/activate ; /var/percy/electrum/bin/electrum daemon stop"
 Restart=always
 
 [Install]
