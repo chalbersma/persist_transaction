@@ -1,0 +1,16 @@
+[Unit]
+Description=Electrum Daemon (Percy)
+After=syslog.target network.target
+
+[Service]
+User=percy
+Group=percy
+Type=forking
+Environment=VIRTUAL_ENV=/var/percy/electrum
+Environment=PATH=$VIRTUAL_ENV/bin:$PATH
+ExecStart=$VIRTUAL_ENV/electrum daemon start
+ExecStop=$VIRTUAL_ENV/electrum daemon stop
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
