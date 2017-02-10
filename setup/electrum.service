@@ -8,8 +8,8 @@ Group=percy
 Type=forking
 Environment=VIRTUAL_ENV=/var/percy/electrum
 Environment=PATH=$VIRTUAL_ENV/bin:$PATH
-ExecStart=$VIRTUAL_ENV/electrum daemon start
-ExecStop=$VIRTUAL_ENV/electrum daemon stop
+ExecStart=$VIRTUAL_ENV/python electrum daemon start
+ExecStop=$VIRTUAL_ENV/python electrum daemon stop
 Restart=always
 
 [Install]
