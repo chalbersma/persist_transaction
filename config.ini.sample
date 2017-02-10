@@ -1,0 +1,18 @@
+[default]
+
+name="Persistent Transactions"
+
+[api]
+
+application_prefix="/api"
+port=8080
+bindaddress="127.0.0.1"
+
+[db]
+
+dbhostname="localhost"
+dbport=3306
+dbuser="persist"
+dbpassword="yerpassword"
+dbname="longtrans"
+
