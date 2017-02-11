@@ -48,7 +48,7 @@ def api_addtrans(txid="none"):
 	
 	error = False
 	
-	transaction = strans(txid)
+	transaction = strans(txid, electrum_string=g.config_items["electrum"]["electrum_command"])
 	valid = transaction.check_still_valid()
 	
 	if valid[0] == True : 

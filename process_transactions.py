@@ -61,7 +61,7 @@ def process_transactions(CONFIG, VERBOSE=False):
 	if how_many_transactions > 0 :
 		all_transactions = a_trans_data[1]
 		for transaction in all_transactions:
-			this_transaction = strans(txid=transaction["txid"], txhex=transaction["hextx"], dbid=transaction["id"])
+			this_transaction = strans(txid=transaction["txid"], txhex=transaction["hextx"], dbid=transaction["id"], electrum_string=config_items["electrum"]["electrum_command"])
 			valid = this_transaction.check_still_valid()
 			#print(valid)
 			Update_Status = dict()
