@@ -2,6 +2,10 @@
 
 name="Persistent Transactions"
 
+[electrum]
+
+electrum_command="/var/percy/electrum/bin/electrum"
+
 [api]
 
 application_prefix="/api"

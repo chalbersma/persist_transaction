@@ -9,18 +9,19 @@ import pymysql
 # Simple Transaction Class
 class strans:
 	
-	def __init__(self, txid, txhex = None, dbid = None):
+	def __init__(self, txid, txhex = None, dbid = None, electrum_string="electrum"):
 		
 		self.txhex = None
 		self.txid = None
 		self.dbid = None
+		self.electrum = electrum_string
 		
 		if txhex == None : 
 			# Wasn't given a transaction hex so I need to ask the network for it.
 			if txid.isalnum() :
 				# Build Transaction
 				self.txid = txid
-				electrum_command = "electrum gettransaction " + txid
+				electrum_command = self.electrum + " gettransaction " + txid
 				
 				try:
 					raw_transaction_info = subprocess.check_output(electrum_command, shell=True)
@@ -122,7 +123,7 @@ class strans:
 		else:
 			if self.txhex.isalnum():
 				#print(self.txhex)
-				electrum_check_valid = "electrum broadcast " + self.txhex
+				electrum_check_valid = self.electrum +  " broadcast " + self.txhex
 				
 				raw_electrum_check = subprocess.check_output(electrum_check_valid, shell=True)
 				check_result = json.loads(raw_electrum_check.decode('utf-8'))
