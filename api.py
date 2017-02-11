@@ -94,11 +94,16 @@ def ui(CONFIG, FDEBUG):
 	from api import root
 	from api import synced
 	from api import addtrans
+	from api import txid
+	from api import attempts
 	
 	# Register API Blueprints for Version 2
 	app.register_blueprint(root.root, url_prefix=config_items["api"]["application_prefix"])
 	app.register_blueprint(synced.synced, url_prefix=config_items["api"]["application_prefix"])
 	app.register_blueprint(addtrans.addtrans, url_prefix=config_items["api"]["application_prefix"])
+	app.register_blueprint(txid.txid, url_prefix=config_items["api"]["application_prefix"])
+	app.register_blueprint(attempts.attempts, url_prefix=config_items["api"]["application_prefix"])
+
 
 	@app.route("/")
 	def index():
