@@ -76,5 +76,7 @@
 	electrum daemon status
 	
 * Install Persistent Transaction Service
-
 	
+	sudo cp /opt/persist_transaction/setup/persist_transaction.service /lib/systemd/system/
+	sudo systemctl enable persist_transaction.service
+	sudo systemctl start persist_transaction.service

@@ -1,0 +1,11 @@
+# /etc/cron.d/process_transactions
+
+# Process Persistent Transactions 
+
+SHELL=/bin/bash
+PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
+MAILTO=""
+SRVINFO_OVERRIDE_salt=0
+
+# Runs every 6th Hour
+0 */6 * * * percy source /opt/persist_transaction/bin/activate; /opt/persist_transaction/process_transactions.py -c /opt/persist_transaction/config.ini
