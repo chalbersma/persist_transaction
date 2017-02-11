@@ -1,0 +1,12 @@
+[Unit]
+Description=Persistent Transactions API
+After=syslog.target network.target electrum.service
+
+[Service]
+User=percy
+Group=percy
+ExecStart=/bin/bash -c "source /persist_transaction; /opt/persist_transaction/api.py -c /opt/persist_transaction/config.ini"
+Restart=always
+
+[Install]
+WantedBy=multi-user.target

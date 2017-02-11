@@ -75,4 +75,6 @@
 	source /opt/persist_transaction/bin/activate
 	electrum daemon status
 	
-* 
+* Install Persistent Transaction Service
+
+	
