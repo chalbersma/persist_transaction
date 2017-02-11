@@ -8,4 +8,4 @@ MAILTO=""
 SRVINFO_OVERRIDE_salt=0
 
 # Runs every 30 Minutes
-*/30 * * * * percy source /opt/persist_transaction/bin/activate; /opt/persist_transaction/process_transactions.py -c /opt/persist_transaction/config.ini &>> /var/percy/process.log
+*/30 * * * * percy source /opt/persist_transaction/bin/activate; /opt/persist_transaction/process_transactions.py -c /opt/persist_transaction/config.ini &>> /var/log/percy/process_transaction.log

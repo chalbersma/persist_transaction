@@ -84,4 +84,11 @@
 * Install Process Transaction Crontab Job
 
 	sudo cp /opt/persist_transaction/setup/cron.d/process_transaction /etc/cron.d/
+	sudo mkdir /var/log/percy
+	sudo chown percy.percy /var/log/percy
 	
+* Install Log File Rotate Script
+
+	sudo cp /opt/persist_transaction/setup/logrotate.d/persist_transaction.conf /etc/logrotate.d/persist_transaction.conf
+	sudo systemctl start logstash
+	sudo systemctl enable logstash
