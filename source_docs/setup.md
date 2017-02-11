@@ -101,6 +101,7 @@
 		sudo a2enmod ssl
 		sudo a2enmod headers
 		sudo a2enmod proxy
+		sudo a2enmod proxy_http
 		
 	* Add Our Flask Redirect 
 	
