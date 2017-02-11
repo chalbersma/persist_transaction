@@ -90,5 +90,5 @@
 * Install Log File Rotate Script
 
 	sudo cp /opt/persist_transaction/setup/logrotate.d/persist_transaction.conf /etc/logrotate.d/persist_transaction.conf
-	sudo systemctl start logstash
-	sudo systemctl enable logstash
+	sudo systemctl start logrotate
+	sudo systemctl enable logrotate
