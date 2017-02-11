@@ -16,7 +16,7 @@
 	
 * Install Electrum and Mysql
 
-	sudo apt install mariadb-server mariadb-client python3 python-qt4 python-pip python-slowaes python3-pip python3-virtualenv python-virtualenv
+	sudo apt install mariadb-server mariadb-client python3 python-qt4 python-pip python-slowaes python3-pip python3-virtualenv python-virtualenv apache ssl-cert
 	
 	* Be Sure to Setup a Mariadb Root Password
 	
@@ -92,3 +92,18 @@
 	sudo cp /opt/persist_transaction/setup/logrotate.d/persist_transaction.conf /etc/logrotate.d/persist_transaction.conf
 	sudo systemctl start logrotate
 	sudo systemctl enable logrotate
+
+* Install Apache For Forwarding
+
+	* Pre Work
+	
+		sudo a2dissite 000-default
+		sudo a2enmod ssl
+		sudo a2enmod headers
+		sudo a2enmod proxy
+		
+	* Add Our Flask Redirect 
+	
+		sudo cp /opt/persist_transaction/setup/percy_flask.conf /etc/apache2/sites-available/
+		sudo a2ensite percy_flask
+		sudo systemctl restart apache2
