@@ -14,12 +14,18 @@ def display_txid(txid=None, dbid=None):
 	
 	error_dict = dict()
 	
-	this_endpoint = g.config_items["self"]["url"] + "/api/txid/" + str(txid)
+	if txid == None :
+		call_var = str(dbid)
+	elif dbid == None :
+		call_var == str(txid)
+	else: 
+		# Neither
+		raise Exception("Magitian detected: No txid or dbid!")
+	
+	this_endpoint = g.config_items["self"]["url"] + "/api/txid/" + call_var
 	#this_endpoint = api_txid(txid=txid, dbid=dbid)
-	this_attempts_endpoint = g.config_items["self"]["url"] + "/api/attempts/" + str(txid)
-	print(this_endpoint)
-		
-	# Grab Endpoint
+	this_attempts_endpoint = g.config_items["self"]["url"] + "/api/attempts/" + call_var
+			
 	try: 
 		txid_data = requests.get(this_endpoint).content
 		txid_attempts = requests.get(this_attempts_endpoint).content
