@@ -128,8 +128,7 @@ class strans:
 					raw_electrum_check = subprocess.check_output(electrum_check_valid, shell=True)
 					check_result = json.loads(raw_electrum_check.decode('utf-8'))
 				except Exception as e :
-					check_result_dict = [ False, "Issue with Transaction: " + str(e)  ]
-					check_result = json.loads(check_result_dict)
+					check_result = [ False, "Issue with Transaction: " + str(e)  ]
 				
 				
 			else :
