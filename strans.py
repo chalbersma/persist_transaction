@@ -124,9 +124,13 @@ class strans:
 			if self.txhex.isalnum():
 				#print(self.txhex)
 				electrum_check_valid = self.electrum +  " broadcast " + self.txhex
+				try:
+					raw_electrum_check = subprocess.check_output(electrum_check_valid, shell=True)
+					check_result = json.loads(raw_electrum_check.decode('utf-8'))
+				except Exception as e :
+					check_result_dict = [ False, "Issue with Transaction: " + str(e)  ]
 				
-				raw_electrum_check = subprocess.check_output(electrum_check_valid, shell=True)
-				check_result = json.loads(raw_electrum_check.decode('utf-8'))
+				
 			else :
 				raise Exception("Bad Hex Value")
 			
