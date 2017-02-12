@@ -2,6 +2,9 @@
 
 name="Persistent Transactions"
 
+[self]
+url="http://localhost:8080/"
+
 [electrum]
 
 electrum_command="/var/percy/electrum/bin/electrum"
