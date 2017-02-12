@@ -8,7 +8,9 @@
 <body>
 {% include 'head.html.jinja' %}
 
-<h1>Transaction Data {{ data["data"]["info"]["txid"] }}</h1>
+<h2>Transaction {{ data["data"]["info"]["txid"] }}</h2>
+
+<h3>Transaction Data</h3>
 
 <table>
 <tr>
@@ -37,13 +39,27 @@
 </tr>
 </table>
 
-<p>Transaction Hex</p>
+<h3>Transaction Hex</h3>
 <code>
 {{ data["data"]["info"]["hextx"] }}
 </code>
 
-<p>Recent Attempts</p>
-<p>{{ attempts }}</p>
+<h3>Attempt</h3>
+<table>
+<tr>
+<th>ID</th>
+<th>checkdate</th>
+<th>result</th>
+</tr>
+{% for attempt in attempts["data"]["data"] %}
+<tr>
+<td>{{ attempt["id"] }}</td>
+<td>{{ attempt["attributes"]["checkdate"] }}</td>
+<td>{{ attempt["attributes"]["result"] }}</td>
+</tr>
+{% endfor %}
+
+</table>
 
 {% include 'footer.html.jinja' %}
 
