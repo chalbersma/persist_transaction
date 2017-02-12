@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>
+		Percy
+	</title>
+</head>
+<body>
+{% include 'head.html.jinja' %}
+
+<h1>Transaction Data {{ data["data"]["info"]["txid"] }}</h1>
+
+<table>
+<th>
+<td>Item</td>
+<td>Value</td>
+</th>
+<tr>
+<td>ID</td>
+<td>{{ data["data"]["info"]["id"] }}</td>
+</tr>
+<tr>
+<td>Is Active</td>
+<td>{{ data["data"]["info"]["active"] }}</td>
+</tr>
+<tr>
+<td>TXID</td>
+<td>{{ data["data"]["info"]["txid"] }}</td>
+</tr>
+<tr>
+<td>Frist Seen</td>
+<td>{{ data["data"]["info"]["firstSeen"] }}</td>
+</tr>
+<tr>
+<td>Last Checked</td>
+<td>{{ data["data"]["info"]["lastchecked"] }}</td>
+</tr>
+</table>
+
+<p>Transaction Hex</p>
+<code>
+{{ data["data"]["info"]["hextx"] }}
+</code>
+
+{% include 'footer.html.jinja' %}
+
+</body>
+</html> 
