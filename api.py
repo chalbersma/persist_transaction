@@ -103,12 +103,16 @@ def ui(CONFIG, FDEBUG):
 	app.register_blueprint(addtrans.addtrans, url_prefix=config_items["api"]["application_prefix"])
 	app.register_blueprint(txid.txid, url_prefix=config_items["api"]["application_prefix"])
 	app.register_blueprint(attempts.attempts, url_prefix=config_items["api"]["application_prefix"])
+	
+	## Display Imports
+	from display import d_txid
+	app.register_blueprint(d_txid.Dtxid, url_prefix="/display")
 
 
 	@app.route("/")
 	def index():
 		# Index
-		return render_template("index.html")
+		return render_template("index.html.jinja")
 	
 
 	app.run(debug=FDEBUG, port=int(config_items['api']['port']) , threaded=True, host=config_items['api']['bindaddress'])
