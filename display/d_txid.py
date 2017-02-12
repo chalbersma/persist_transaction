@@ -17,7 +17,7 @@ def display_txid(txid=None, dbid=None):
 	if txid == None :
 		call_var = str(dbid)
 	elif dbid == None :
-		call_var == str(txid)
+		call_var = str(txid)
 	else: 
 		# Neither
 		raise Exception("Magitian detected: No txid or dbid!")
