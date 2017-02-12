@@ -24,9 +24,9 @@ def display_txid(txid=None, dbid=None):
 	stringified = txid_data.decode('utf-8')
 	sanitized = json.loads(stringified)
 
-	return sanitized
+	return jsonify(sanitized)
 		
 	#print(hosts_list)
 	
-	return render_template('display/Dtxid.html.jinja', hosts_list=hosts_list)
+	#return render_template('display/Dtxid.html.jinja', hosts_list=hosts_list)
 
