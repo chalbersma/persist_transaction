@@ -24,7 +24,7 @@ def display_txid(txid=None, dbid=None):
 		print(str(e))
 	
 	stringified = txid_data.decode('utf-8')
-	stringified_attempts = txid_data.decode('utf-8')
+	stringified_attempts = txid_attempts.decode('utf-8')
 	sanitized = json.loads(stringified)
 	sanitized_attempts = json.loads(stringified_attempts)
 	
