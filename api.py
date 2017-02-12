@@ -114,7 +114,6 @@ def ui(CONFIG, FDEBUG):
 		# Index
 		return render_template("index.html.jinja")
 	
-
 	app.run(debug=FDEBUG, port=int(config_items['api']['port']) , threaded=True, host=config_items['api']['bindaddress'])
 	
 

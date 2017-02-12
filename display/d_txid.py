@@ -22,12 +22,12 @@ def display_txid(txid=None, dbid=None):
 		# Neither
 		raise Exception("Magitian detected: No txid or dbid!")
 	
-	this_endpoint = g.config_items["self"]["url"] + "/api/txid/" + call_var
+	this_endpoint = g.config_items["self"]["url"] + "api/txid/" + call_var
 	#this_endpoint = api_txid(txid=txid, dbid=dbid)
-	this_attempts_endpoint = g.config_items["self"]["url"] + "/api/attempts/" + call_var
+	this_attempts_endpoint = g.config_items["self"]["url"] + "api/attempts/" + call_var
 	
-	print(this_endpoint)
-	print(this_attempts_endpoint)
+	#print(this_endpoint)
+	#print(this_attempts_endpoint)
 			
 	try: 
 		txid_data = requests.get(this_endpoint).content
@@ -35,10 +35,10 @@ def display_txid(txid=None, dbid=None):
 	except Exception as e:
 		print(str(e))
 	
-	print(type(txid_data))
-	print(txid_data)
-	print(type(txid_attempts))
-	print(txid_attempts)
+	#print(type(txid_data))
+	#print(txid_data)
+	#print(type(txid_attempts))
+	#print(txid_attempts)
 	
 	stringified = txid_data.decode('utf-8')
 	stringified_attempts = txid_attempts.decode('utf-8')
