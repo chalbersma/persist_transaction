@@ -129,6 +129,7 @@ class strans:
 					check_result = json.loads(raw_electrum_check.decode('utf-8'))
 				except Exception as e :
 					check_result_dict = [ False, "Issue with Transaction: " + str(e)  ]
+					check_result = json.loads(check_result_dict)
 				
 				
 			else :
