@@ -6,13 +6,16 @@ import requests
 
 Dtxid = Blueprint('display_txid', __name__)
 
-@Dtxid.route("/Dtxid/<txid>")
-@Dtxid.route("/Dtxid/<txid>/")
+@Dtxid.route("/Dtxid/<string:txid>")
+@Dtxid.route("/Dtxid/<string:txid>/")
+@Dtxid.route("/Dtxid/<int:dbid>")
+@Dtxid.route("/Dtxid/<int:dbid>/")
 def display_txid(txid=None, dbid=None):
 	
 	error_dict = dict()
 		
-	this_endpoint = "http://127.0.0.1:8080" + "/api/txid/" + str(txid)
+	#this_endpoint = "http://127.0.0.1:8080" + "/api/txid/" + str(txid)
+	this_endpoint = api_txid(txid=txid, dbid=dbid)
 	this_attempts_endpoint = "http://127.0.0.1:8080" + "/api/attempts/" + str(txid)
 	print(this_endpoint)
 		
