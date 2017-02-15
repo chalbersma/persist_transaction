@@ -31,10 +31,10 @@ import pymysql
 
 txid = Blueprint('api_txid', __name__)
 
-@txid.route("/txid/<string:txid>")
-@txid.route("/txid/<string:txid>/")
-@txid.route("/txid/<int:dbid>")
-@txid.route("/txid/<int:dbid>/")
+@txid.route("/txid/<string:txid>", methods=['GET'])
+@txid.route("/txid/<string:txid>/", methods=['GET'])
+@txid.route("/txid/<int:dbid>", methods=['GET'])
+@txid.route("/txid/<int:dbid>/", methods=['GET'])
 def api_txid(txid=None, dbid=None):
 
 	root_meta_dict = dict()

@@ -96,6 +96,7 @@ def ui(CONFIG, FDEBUG):
 	from api import addtrans
 	from api import txid
 	from api import attempts
+	from api import txlist
 	
 	# Register API Blueprints for Version 2
 	app.register_blueprint(root.root, url_prefix=config_items["api"]["application_prefix"])
@@ -103,10 +104,15 @@ def ui(CONFIG, FDEBUG):
 	app.register_blueprint(addtrans.addtrans, url_prefix=config_items["api"]["application_prefix"])
 	app.register_blueprint(txid.txid, url_prefix=config_items["api"]["application_prefix"])
 	app.register_blueprint(attempts.attempts, url_prefix=config_items["api"]["application_prefix"])
+	app.register_blueprint(txlist.txlist, url_prefix=config_items["api"]["application_prefix"])
 	
 	## Display Imports
 	from display import d_txid
+	from display import d_txlist
+	
+	# Register Display Blueprints
 	app.register_blueprint(d_txid.Dtxid, url_prefix="/display")
+	app.register_blueprint(d_txlist.Dtxlist, url_prefix="/display")
 
 
 	@app.route("/")

@@ -8,59 +8,66 @@
 <body>
 {% include 'head.html.jinja' %}
 
-<h2>Transaction {{ data["data"]["info"]["txid"] }}</h2>
+{% if gotdata["txdata"] == True %}
+	<h2>Transaction {{ data["data"]["info"]["txid"] }}</h2>
 
-<h3>Transaction Data</h3>
+	<h3>Transaction Data</h3>
 
-<table>
-<tr>
-<th>Item</th>
-<th>Value</th>
-</tr>
-<tr>
-<td>ID</td>
-<td>{{ data["data"]["info"]["id"] }}</td>
-</tr>
-<tr>
-<td>Is Active</td>
-<td>{{ data["data"]["info"]["active"] }}</td>
-</tr>
-<tr>
-<td>TXID</td>
-<td>{{ data["data"]["info"]["txid"] }}</td>
-</tr>
-<tr>
-<td>Frist Seen</td>
-<td>{{ data["data"]["info"]["firstSeen"] }}</td>
-</tr>
-<tr>
-<td>Last Checked</td>
-<td>{{ data["data"]["info"]["lastchecked"] }}</td>
-</tr>
-</table>
+	<table>
+	<tr>
+	<th>Item</th>
+	<th>Value</th>
+	</tr>
+	<tr>
+	<td>ID</td>
+	<td>{{ data["data"]["info"]["id"] }}</td>
+	</tr>
+	<tr>
+	<td>Is Active</td>
+	<td>{{ data["data"]["info"]["active"] }}</td>
+	</tr>
+	<tr>
+	<td>TXID</td>
+	<td>{{ data["data"]["info"]["txid"] }}</td>
+	</tr>
+	<tr>
+	<td>Frist Seen</td>
+	<td>{{ data["data"]["info"]["firstSeen"] }}</td>
+	</tr>
+	<tr>
+	<td>Last Checked</td>
+	<td>{{ data["data"]["info"]["lastchecked"]|default("Not Yet Checked")  }}</td>
+	</tr>
+	</table>
 
-<h3>Transaction Hex</h3>
-<code>
-{{ data["data"]["info"]["hextx"] }}
-</code>
+	<h3>Transaction Hex</h3>
+	<code>
+	{{ data["data"]["info"]["hextx"] }}
+	</code>
+	<h3>Attempt</h3>
+  {% if gotdata["attemptsdata"] == True %}
+		<table>
+		<tr>
+		<th>ID</th>
+		<th>checkdate</th>
+		<th>result</th>
+		</tr>
+		{% for attempt in attempts["data"]["data"] %}
+		<tr>
+		<td>{{ attempt["id"] }}</td>
+		<td>{{ attempt["attributes"]["checkdate"]}}</td>
+		<td>{{ attempt["attributes"]["result"] }}</td>
+		</tr>
+		{% endfor %}
 
-<h3>Attempt</h3>
-<table>
-<tr>
-<th>ID</th>
-<th>checkdate</th>
-<th>result</th>
-</tr>
-{% for attempt in attempts["data"]["data"] %}
-<tr>
-<td>{{ attempt["id"] }}</td>
-<td>{{ attempt["attributes"]["checkdate"] }}</td>
-<td>{{ attempt["attributes"]["result"] }}</td>
-</tr>
-{% endfor %}
-
-</table>
-
+		</table>
+	{% else %}
+		<p>No transactions recorded. Check back Later.</p>
+	{% endif %}
+{% else %}
+  <h2>Untracked Transaction</h2>
+	<p>Transaction Not Found.</p>
+{% endif %}
 {% include 'footer.html.jinja' %}
 
 </body>

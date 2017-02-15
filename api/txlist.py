@@ -2,22 +2,27 @@
 
 """
 ```swagger-yaml
-/attempts/{txid} :                                              
+/txlist :                                              
   get:                                               
     produces:                                        
       - application/json                             
     description: |                                   
-      Grab Attempts made on a Particular Transaction ID
+			Grab transaction list
     responses:                                       
       200:                                           
         description: OK
     parameters:
-      - name: txid
-        in: path
+      - name: inactive
+        in: query
         description: |
-          Find latest info about tracked transaction id
-        required: true
+          Include no longer tracked transactions.
+        required: false
         type: string
+      - name: amount
+        description: |
+				  Include only X amount of transactions By Default Limited to 100.
+				required: false
+				type: string
                                   
 ```
 """
@@ -29,13 +34,11 @@ import time
 import subprocess
 import pymysql
 
-attempts = Blueprint('api_attempts', __name__)
+txlist = Blueprint('api_txlist', __name__)
 
-@attempts.route("/attempts/<string:txid>", methods=['GET'])
-@attempts.route("/attempts/<string:txid>/", methods=['GET'])
-@attempts.route("/attempts/<int:dbid>", methods=['GET'])
-@attempts.route("/attempts/<int:dbid>/", methods=['GET'])
-def api_attempts(txid=None, dbid=None):
+@txlist.route("/txlist", methods=['GET'])
+@txlist.route("/txlist/", methods=['GET'])
+def api_txlist(inactive=None, amount=None):
 
 	root_meta_dict = dict()
 	root_data_dict = dict()
@@ -48,28 +51,33 @@ def api_attempts(txid=None, dbid=None):
 	
 	#root_data_dict["dbid"] = dbid
 	#root_data_dict["txid"] = txid
-	where_string = str()
-	do_query=False
+	active_string = "where active = TRUE "
+	# Default Limit
+	limit=100
+	do_query=True
 	error=True
 	
-	if dbid != None :
-		# Given dbid use
-		do_query = True
-		where_string = " trked_trans.id = " + str(dbid) + " "
-	elif txid != None and txid.isalnum() :
-		do_query = True
-		where_string = " trked_trans.txid = '" + str(txid) + "' "
-	else :
-		do_query = False
-		# Error Incoming
-		root_error_dict["inputerrors"] = "Given values do not make sense"
+	if "inactive" in request.args :
+		inactive = request.args["inactive"]
+	elif "amount" in request.args :
+		amount = int(request.args["amount"])
+	
+	if inactive != None :
+		# No Inactive Specified
+		active_string = "  "
+	elif amount != None and type(amount) is int and amount > 1 :
+		limit=int(amount)
+		
+	print(limit)
+	
 	
 	if do_query == True :
-		get_transaction_query = " SELECT atid as attemptid, trked_trans.id as dbid, trked_trans.txid as txid, checkdate, result FROM attempts JOIN trked_trans on fk_trked_trans_id = trked_trans.id where " + where_string 
-		print(get_transaction_query)
+		
+		get_active_transactions = " SELECT id, txid, firstSeen, lastchecked, active FROM trked_trans " + active_string + "limit " + str(limit)
 		
 		try:
-			g.cur.execute(get_transaction_query)
+			g.cur.execute(get_active_transactions)
+			print(get_active_transactions)
 			howmany = g.cur.rowcount
 			if (howmany == 0 ):
 				# No Transaction
@@ -77,16 +85,16 @@ def api_attempts(txid=None, dbid=None):
 				root_error_dict["notransaction"] = True
 			else :
 				transaction = g.cur.fetchall()
-				
+				howmany = g.cur.rowcount
+				root_meta_dict["totaltx"] = howmany
 				root_data_dict["data"] = list()
-				
-				for i in range(0, len(transaction)) :
-					this_results = dict()
-					this_results["id"] = transaction[i]["attemptid"]
-					this_results["attributes"] = transaction[i]
-					root_data_dict["data"].append(this_results)
+				for i in range(0, howmany):
+					this_transaction = dict()
+					this_transaction["attributes"] = transaction[i]
+					this_transaction["id"] = transaction[i]["id"]
+					root_data_dict["data"].append(this_transaction)
 					
-				root_meta_dict["success"] = True
+				root_data_dict["success"] = True
 				error=False
 		except pymysql.IntegrityError as e :
 			root_error_dict["success"] = False

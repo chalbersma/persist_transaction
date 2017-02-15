@@ -33,8 +33,8 @@ import subprocess
 
 addtrans = Blueprint('api_addtrans', __name__)
 
-@addtrans.route("/addtrans/<string:txid>")
-@addtrans.route("/addtrans/<string:txid>/")
+@addtrans.route("/addtrans/<string:txid>", methods=['GET'])
+@addtrans.route("/addtrans/<string:txid>/", methods=['GET'])
 def api_addtrans(txid="none"):
 
 	root_meta_dict = dict()

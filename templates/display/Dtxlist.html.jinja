@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>
+		Percy
+	</title>
+</head>
+<body>
+{% include 'head.html.jinja' %}
+{% if gotdata["txlist"] == True %}
+	<h2>Transaction List</h2>
+	<table>
+	<tr>
+	<th>TXID</th>
+	<th>Check Date</th>
+	<th>Still Active</th>
+	</tr>
+	{% for tx in txlist["data"]["data"] %}
+	<tr>
+	<td><a href="/display/Dtxid/{{ tx["id"] }}">{{ tx["attributes"]["txid"] }}</a></td>
+	<td>{{ tx["attributes"]["lastcheckd"]|default(tx["attributes"]["firstSeen"]) }}</td>
+	<td>{{ tx["attributes"]["active"] }}</td>
+	</tr>
+	{% endfor %}
+
+	</table>
+{% else %}
+	<h2>Transaction List</h2>
+	<p>No transactions found</p>
+{% endif %}
+
+{% include 'footer.html.jinja' %}
+
+</body>
+</html> 

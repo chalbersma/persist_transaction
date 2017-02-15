@@ -45,5 +45,17 @@ def display_txid(txid=None, dbid=None):
 	sanitized = json.loads(stringified)
 	sanitized_attempts = json.loads(stringified_attempts)
 	
-	return render_template('display/Dtxid.html.jinja', data=sanitized, attempts=sanitized_attempts)
+	if "error" in sanitized.keys() :
+		txdata=False
+	else :
+		txdata=True
+	
+	if "error" in sanitized_attempts.keys() :
+		attemptsdata=False
+	else :
+		attemptsdata=True
+		
+	success_fail = { "txdata" : txdata, "attemptsdata" : attemptsdata }
+	
+	return render_template('display/Dtxid.html.jinja', data=sanitized, attempts=sanitized_attempts, gotdata=success_fail)
 
