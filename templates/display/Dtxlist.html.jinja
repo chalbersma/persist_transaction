@@ -17,7 +17,7 @@
 	</tr>
 	{% for tx in txlist["data"]["data"] %}
 	<tr>
-	<td><a href="/display/Dtxid/{{ tx["id"] }}">{{ tx["attributes"]["txid"] }}</a></td>
+	<td><a href="/display/Dtxid/{{ tx["id"] }}/">{{ tx["attributes"]["txid"] }}</a></td>
 	<td>{{ tx["attributes"]["lastcheckd"]|default(tx["attributes"]["firstSeen"]) }}</td>
 	<td>{{ tx["attributes"]["active"] }}</td>
 	</tr>
