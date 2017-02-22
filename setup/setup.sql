@@ -16,13 +16,30 @@ CREATE TABLE `trked_trans` (
 
 CREATE TABLE `attempts` (
 	`atid` INT UNSIGNED NOT NULL AUTO_INCREMENT,
-	`fk_trked_trans_id` INT NOT NULL REFERENCES trked_trans(id),
+	`fk_trked_trans_id` INT UNSIGNED NOT NULL REFERENCES trked_trans(id),
 	`checkdate` TIMESTAMP NOT NULL default CURRENT_TIMESTAMP,
 	`result` ENUM('resubmit', 'invalid', 'confirmed'), 
 	PRIMARY KEY (`atid`)
+);
+
+CREATE TABLE `emails` (
+	`emailid` INT UNSIGNED NOT NULL AUTO_INCREMENT,
+	`email` VARCHAR(64) NOT NULL UNIQUE,
+	`confirmstring` VARCHAR(64),
+	`active` BOOLEAN NOT NULL,
+	PRIMARY KEY (`emailid`)
+);
+
+CREATE TABLE `notify_lookup` (
+	`notifyid` INT UNSIGNED NOT NULL AUTO_INCREMENT,
+	`fk_trked_trans_id` INT UNSIGNED NOT NULL REFERENCES trked_trans(id),
+	`fk_emailid` INT UNSIGNED NOT NULL REFERENCES emails(emailid),
+	PRIMARY KEY (`notifyid`)
 );
 
 
 create user 'persist'@'localhost' identified by 'yerpassword';
 grant insert, update, select, delete on longtrans.attempts to 'persist'@'localhost';
 grant insert, update, select, delete on longtrans.trked_trans to 'persist'@'localhost';
+grant insert, update, select, delete on longtrans.emails to 'persist'@'localhost';
+grant insert, update, select, delete on longtrans.notify_lookup to 'persist'@'localhost';
