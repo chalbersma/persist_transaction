@@ -37,6 +37,7 @@ CREATE TABLE `notify_lookup` (
 	PRIMARY KEY (`notifyid`)
 );
 
+create unique index notifyLookup_txemail on notify_lookup(fk_trked_trans_id, fk_emailid);
 
 create user 'persist'@'localhost' identified by 'yerpassword';
 grant insert, update, select, delete on longtrans.attempts to 'persist'@'localhost';

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>
+		Percy
+	</title>
+</head>
+<body>
+{% include 'head.html.jinja' %}
+
+<h2>Confirm Email</h2>
+<form name="confirmemail" action="/display/Dconfirmemail_results/", method="post">
+	Email ID to Confirm: 
+	<input type="text" name="emailid">
+	Confirmation String: 
+	<input type="text" name="confirmstring">
+	<input type="submit" value="add">
+</form>
+
+{% include 'footer.html.jinja' %}
+
+</body>
+</html> 

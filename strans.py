@@ -4,6 +4,8 @@
 import subprocess
 import json
 import pymysql
+import smtplib
+from email.mime.text import MIMEText
 
 
 # Simple Transaction Class
@@ -76,7 +78,60 @@ class strans:
 			return_dict["failure_short"] = "Unknown Failure " + str(e)
 		
 		return return_dict
+		
+	def retire_notify(self, dbconn, emailconfig):
+		# Sending Retiernment Notifications
+		return_dict = dict()
 			
+		retire_notify_sql = " select emails.email as email from emails  join notify_lookup on emailid = notify_lookup.fk_emailid where notify_lookup.fk_trked_trans_id = " + str(self.dbid) + " and active = 1 "
+		
+		try : 
+			dbconn.execute(retire_notify_sql)
+			howmany = dbconn.rowcount
+			if (howmany == 0 ):
+				return_dict["nonotify"] = True
+				return_dict["howmany"] = howmany
+			else :
+				return_dict["howmany"] = howmany
+				alldememails = dbconn.fetchall()
+				print(alldememails)
+				notify_message = '''Hello,
+														Your transaction has confirmed or become invalid. You can view our tracking history of it.
+														At a link that I haven't yet defined yet.'''
+				subject_message = "Percy: Transaction " + str(self.txid) + " Complete "
+				
+				for this_email in alldememails : 
+
+					this_email_string = this_email["email"]
+
+					msg = MIMEText(notify_message)
+					msg['From'] = emailconfig["fromemail"]
+					msg['To'] = this_email_string
+					msg['Subject'] = subject_message
+					
+					mailserver = smtplib.SMTP(emailconfig["smtp_host"],emailconfig["smtp_port"])
+					
+					mailserver.ehlo()
+					
+					if emailconfig["usetls"] == True :
+						mailserver.starttls()
+						mailserver.ehlo()
+					if emailconfig["useuserauth"] == True :
+						mailserver.login(emailconfig["smtpauthuser"], emailconfig["smtpauthpassword"])
+
+					mailserver.sendmail(emailconfig["fromemail"],this_email_string,msg.as_string())
+
+					mailserver.quit()
+					
+		except Exception as e :
+			print("Emails Send Problem : " + str(e))
+			return_dict["error"] = "Problem " + str(e)
+		
+						
+
+		return return_dict
+		
+		
 	def do_update(self, dbconn, updatedict):
 		return_dict = dict()
 		

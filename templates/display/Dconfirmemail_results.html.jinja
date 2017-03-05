@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>
+		Percy
+	</title>
+</head>
+<body>
+{% include 'head.html.jinja' %}
+
+<h2>Confirm Email Results</h2>
+
+{% if error == False -%}
+
+<p>Email has been confirmed.</p>
+
+{% else -%}
+<p>Error confirming email.</p>
+{% endif -%}
+
+{% include 'footer.html.jinja' %}
+
+</body>
+</html> 

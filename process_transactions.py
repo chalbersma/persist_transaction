@@ -57,6 +57,8 @@ def process_transactions(CONFIG, VERBOSE=False):
 	txresults["invalid"] = 0
 	txresults["retired"] = 0
 	txresults["totaltrans"] = how_many_transactions
+	
+	
 
 	if how_many_transactions > 0 :
 		all_transactions = a_trans_data[1]
@@ -78,6 +80,13 @@ def process_transactions(CONFIG, VERBOSE=False):
 					Update_Status["result"] = "invalid"
 					Update_Status["still_valid"] = False
 					txresults["invalid"] += 1 
+				
+				# Notification
+				cur = db_conn.cursor(pymysql.cursors.DictCursor)	
+				this_transaciton_nofity = this_transaction.retire_notify(cur, config_items["email"])
+				cur.close()
+				
+				txresults[transaction["txid"]] = { "notify" : this_transaciton_nofity }
 			else :
 				# Still Valid
 				Update_Status["still_valid"] = True

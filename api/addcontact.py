@@ -78,7 +78,7 @@ def api_addcontact(email=None, method=None):
 				if (howmany > 0 ):
 					# Email in System
 					email_exists=True
-					error=true
+					error=True
 					emailid = g.cur.fetchone()
 					root_error_dict["preexisting_email"] = emailid
 					root_error_dict["bademail"] = "Email already in system."					
@@ -103,9 +103,13 @@ def api_addcontact(email=None, method=None):
 					root_data_dict["emailid"] = int(emailid)
 					root_data_dict["email"] = str(email)
 					
-					message = '''Hello,
-											 Please confirm your email, visit some string I haven't made yet to do so.
-										'''
+					message_parts = list()
+					message_parts.append("Hello,  ")
+					message_parts.append("Please confirm your email, visit :")
+					message_parts.append(" ")
+					message_parts.append(g.config_items["self"]["url"] + "display/Dconfirmemail_results/?" + "emailid=" + str(emailid) + "&" + "confirmstring=" + str(confirm_string))
+					
+					message="\n".join(message_parts)
 					
 					msg = MIMEText(message)
 					msg['From'] = g.config_items["email"]["fromemail"]
@@ -116,12 +120,14 @@ def api_addcontact(email=None, method=None):
 					
 					mailserver.ehlo()
 					
-					if g.config_items["email"]["useTLS"] == True :
+					print(g.config_items["email"])
+					
+					if g.config_items["email"]["usetls"] == True :
 						mailserver.starttls()
 						mailserver.ehlo()
 					
-					if g.config_items["email"]["useUserAuth"] == True :
-						mailserver.login(g.config_items["email"]["smtpAuthUser"], g.config_items["email"]["smtpAuthPassword"])
+					if g.config_items["email"]["useuserauth"] == True :
+						mailserver.login(g.config_items["email"]["smtpauthuser"], g.config_items["email"]["smtpauthpassword"])
 
 					mailserver.sendmail(g.config_items["email"]["fromemail"],str(email),msg.as_string())
 

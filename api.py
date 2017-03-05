@@ -98,6 +98,8 @@ def ui(CONFIG, FDEBUG):
 	from api import attempts
 	from api import txlist
 	from api import addcontact
+	from api import confirmemail
+	from api import watchtx
 	
 	# Register API Blueprints for Version 2
 	app.register_blueprint(root.root, url_prefix=config_items["api"]["application_prefix"])
@@ -107,14 +109,24 @@ def ui(CONFIG, FDEBUG):
 	app.register_blueprint(attempts.attempts, url_prefix=config_items["api"]["application_prefix"])
 	app.register_blueprint(txlist.txlist, url_prefix=config_items["api"]["application_prefix"])
 	app.register_blueprint(addcontact.addcontact, url_prefix=config_items["api"]["application_prefix"])
+	app.register_blueprint(confirmemail.confirmemail, url_prefix=config_items["api"]["application_prefix"])
+	app.register_blueprint(watchtx.watchtx, url_prefix=config_items["api"]["application_prefix"])
 	
 	## Display Imports
 	from display import d_txid
 	from display import d_txlist
+	from display import d_addemail
+	from display import d_addemail_results
+	#from display import d_confirmemail
+	from display import d_confirmemail_results
 	
 	# Register Display Blueprints
 	app.register_blueprint(d_txid.Dtxid, url_prefix="/display")
 	app.register_blueprint(d_txlist.Dtxlist, url_prefix="/display")
+	app.register_blueprint(d_addemail.Daddemail, url_prefix="/display")
+	app.register_blueprint(d_addemail_results.Daddemail_results, url_prefix="/display")
+	#app.register_blueprint(d_confirmemail.Dconfirmemail, url_prefix="/display")
+	app.register_blueprint(d_confirmemail_results.Dconfirmemail_results, url_prefix="/display")
 
 
 	@app.route("/")

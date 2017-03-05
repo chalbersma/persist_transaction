@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>
+		Percy
+	</title>
+</head>
+<body>
+{% include 'head.html.jinja' %}
+
+<h2>Add Email</h2>
+<form name="submitemail" action="/display/Daddemail_results/", method="post">
+	Email To Add : 
+	<input type="text" name="email">
+	<input type="submit" value="add">
+</form>
+
+{% include 'footer.html.jinja' %}
+
+</body>
+</html> 
