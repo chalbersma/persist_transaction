@@ -95,7 +95,7 @@ def api_watchtx(txid=None, email=None):
 			# Add Watchtx
 			#print(dbtxid, emailid)
 			watchtxquery = " replace into notify_lookup ( fk_trked_trans_id, fk_emailid ) values ( '" + str(dbtxid["id"]) + "' , '" + str(emailid["emailid"]) + "' ) "
-			#print(watchtxquery)
+			print(watchtxquery)
 			try:
 				g.cur.execute(watchtxquery)
 				watchid = g.cur.lastrowid
