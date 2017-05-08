@@ -117,16 +117,20 @@ def ui(CONFIG, FDEBUG):
 	from display import d_txlist
 	from display import d_addemail
 	from display import d_addemail_results
-	#from display import d_confirmemail
+	from display import d_confirmemail
 	from display import d_confirmemail_results
+	from display import d_addtx
+	from display import d_addtx_results
 	
 	# Register Display Blueprints
 	app.register_blueprint(d_txid.Dtxid, url_prefix="/display")
 	app.register_blueprint(d_txlist.Dtxlist, url_prefix="/display")
 	app.register_blueprint(d_addemail.Daddemail, url_prefix="/display")
 	app.register_blueprint(d_addemail_results.Daddemail_results, url_prefix="/display")
-	#app.register_blueprint(d_confirmemail.Dconfirmemail, url_prefix="/display")
+	app.register_blueprint(d_confirmemail.Dconfirmemail, url_prefix="/display")
 	app.register_blueprint(d_confirmemail_results.Dconfirmemail_results, url_prefix="/display")
+	app.register_blueprint(d_addtx.Daddtx, url_prefix="/display")
+	app.register_blueprint(d_addtx_results.Daddtx_results, url_prefix="/display")
 
 
 	@app.route("/")

@@ -64,6 +64,7 @@
 	{% else %}
 		<p>No transactions recorded. Check back Later.</p>
 	{% endif %}
+	<p>View on <a href='https://blockchain.info/tx/{{ data["data"]["info"]["txid"] }}'>Block Explorer</a></p>
 {% else %}
   <h2>Untracked Transaction</h2>
 	<p>Transaction Not Found.</p>

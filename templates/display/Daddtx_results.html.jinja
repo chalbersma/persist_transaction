@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>
+		Percy
+	</title>
+</head>
+<body>
+{% include 'head.html.jinja' %}
+
+<h2>Add TX Results</h2>
+
+{% if error == False -%}
+
+<p>Transaction added Successfully. <a href=/Dtxid/{{ results["result"]["insert_id"] }}>View it's status here.</a></p>
+
+{% else -%}
+<p>Error adding tx.</p>
+<code>{{ results }}</code>
+{% endif -%}
+
+{% include 'footer.html.jinja' %}
+
+</body>
+</html> 

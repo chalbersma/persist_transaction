@@ -68,6 +68,8 @@ def api_addcontact(email=None, method=None):
 		# Verify Email
 		parse_email_pattern = re.compile(g.config_items["email"]["validation_regex"])
 		valid = parse_email_pattern.match(email)
+		print(valid)
+		print(email)
 		if valid :
 			# We've a valid email address
 			check_if_email_query = "select emailid from emails where email = '" + email + "' ; "
