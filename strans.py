@@ -32,7 +32,7 @@ class strans:
 					return
 				
 			else : 
-				#print(txid)
+				print(txid)
 				raise Exception("Bad Transaction")
 				
 			transaction_info = json.loads(raw_transaction_info.decode('utf-8'))

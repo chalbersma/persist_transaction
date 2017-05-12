@@ -6,21 +6,21 @@ import requests
 
 Dwatchtx_results = Blueprint('display_watchtx_results', __name__)
 
-@Dwatchtx_results.route("/Dwatchtx_results/", methods=['GET'])
-@Dwatchtx_results.route("/Dwatchtx_results/", methods=['GET'])
+@Dwatchtx_results.route("/Dwatchtx_results/", methods=['GET','POST'])
+@Dwatchtx_results.route("/Dwatchtx_results/", methods=['GET','POST'])
 def display_watchtx_results(txid=None, email=None):
 	
 	error = False
 	
 	if "email" in request.args : 
 		email = str(request.args["email"])
-	elif "email" in request.forms : 
-		email = str(request.forms["email"])
+	elif "email" in request.form : 
+		email = str(request.form["email"])
 	
 	if "txid" in request.args : 
 		txid = str(request.args["txid"])
-	elif "txid" in request.forms : 
-		txid = str(request.forms["txid"])
+	elif "txid" in request.form : 
+		txid = str(request.form["txid"])
 	
 	if email != None and txid != None : 
 		call_var = "?email=" + str(email) + "&txid=" + str(txid)
@@ -45,6 +45,6 @@ def display_watchtx_results(txid=None, email=None):
 		sanitized = { "Error" : True }
 		error = True
 	
-	return render_template('display/Dwatchemail_results.html.jinja', error=error, results=sanitized )
+	return render_template('display/Dwatchtx_results.html.jinja', error=error, txid=txid, results=sanitized )
 
 
