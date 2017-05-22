@@ -79,7 +79,7 @@ class strans:
 		
 		return return_dict
 		
-	def retire_notify(self, dbconn, emailconfig):
+	def retire_notify(self, dbconn, emailconfig, baselink):
 		# Sending Retiernment Notifications
 		return_dict = dict()
 			
@@ -95,9 +95,16 @@ class strans:
 				return_dict["howmany"] = howmany
 				alldememails = dbconn.fetchall()
 				print(alldememails)
-				notify_message = '''Hello,
-														Your transaction has confirmed or become invalid. You can view our tracking history of it.
-														At a link that I haven't yet defined yet.'''
+				
+				link=baselink+"display/Dtxid/"+self.txid+"/"
+				
+				print(link)
+				
+				notify_message = "Hello, Your transaction has confirmed or become invalid. You can view our tracking history of it: \n " + link
+
+				
+				print(notify_message)
+				
 				subject_message = "Percy: Transaction " + str(self.txid) + " Complete "
 				
 				for this_email in alldememails : 

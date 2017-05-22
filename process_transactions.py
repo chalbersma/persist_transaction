@@ -83,7 +83,7 @@ def process_transactions(CONFIG, VERBOSE=False):
 				
 				# Notification
 				cur = db_conn.cursor(pymysql.cursors.DictCursor)	
-				this_transaciton_nofity = this_transaction.retire_notify(cur, config_items["email"])
+				this_transaciton_nofity = this_transaction.retire_notify(cur, config_items["email"], config_items["self"]["url"])
 				cur.close()
 				
 				txresults[transaction["txid"]] = { "notify" : this_transaciton_nofity }

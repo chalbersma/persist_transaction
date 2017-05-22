@@ -12,7 +12,7 @@
 
 {% if error == False -%}
 
-<p>Transaction added Successfully. <a href=/Dtxid/{{ results["result"]["insert_id"] }}>View it's status here.</a></p>
+<p>Transaction added Successfully. <a href=/display/Dtxid/{{ results["data"]["result"]["insert_id"] }}>View it's status here.</a></p>
 
 {% else -%}
 <p>Error adding tx.</p>

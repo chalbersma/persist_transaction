@@ -1,0 +1,59 @@
+/* Default CSS For Percy */
+
+body {
+  padding: 100px;
+  font-size: 12px;
+  width 80%;
+}
+
+body header h1 {
+ text-align: center;
+ font-size: 48;
+}
+
+body header ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+body header li {
+    float: left;
+}
+
+body header li a {
+    display: block;
+    padding: 8px;
+}
+
+h1 {
+  text-align: center;
+  font-size: 24
+}
+
+h2 {
+  text-align: left;
+  font-size: 18
+}
+
+table, td, th {    
+    border: 1px solid #ddd;
+    text-align: left;
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+th, td {
+    padding: 5px;
+}
+
+pre {
+  font: 100% courier,monospace;
+	overflow: auto;
+	overflow-x: scroll;
+}
+
