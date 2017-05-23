@@ -31,7 +31,7 @@
 	virtualenv -p python2 electrum
 	cd /var/percy/electrum
 	source bin/activate
-	pip install https://download.electrum.org/2.7.18/Electrum-2.7.18.tar.gz
+	pip install https://download.electrum.org/2.8.2/Electrum-2.8.2.tar.gz
 	
 * Enable Electrum as a Daemon
 
