@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>
+		Percy
+	</title>
+</head>
+<body>
+{% include 'head.html.jinja' %}
+<h1>Why Percy</h1>
+<p>
+The short answer is that blocks are too damn small. 
+</p>
+<p>
+Longer answer, we should have hardforked
+to a larger blocksize about two years ago. And we were, as a community, ready
+to switch to a SegWit then 2MB Hardfork solution known as the 
+<a href="https://medium.com/@bitcoinroundtable/bitcoin-roundtable-consensus-266d475a61ff">
+Hong Kong agreement</a>. Needless to say the 2MB Hardfork Code was never
+delivered by Core (or even really attempted). Now it looks like consensus
+around a 2MB Hardfork + Segwit simultaneous solution is coming around and
+it's possible that might pass.
+</p>
+<p>
+If you view the 
+<a href="https://github.com/chalbersma/persist_transaction/graphs/code-frequency">
+commit statistics</a> for this project you will note that I finished most
+of this in Febuary and stopped right as Bitcoin Unlimited started to reach
+~45% assuming that would mark the end of Bitcoin's Blockstream experiment
+and lead to a coalesing around a hardfork solution to bigger blocks and that
+this project would no longer be needed. However it's clear that even if that
+happens were still going to need a better solution for transacting with
+bitcoin in the meantime.
+</p>
+<p>
+So enter Percy my little persistent transaction tool. The concept is simple.
+48-72hrs in the mempool just isn't long enough to ensure that your transaction
+is confirmed! Bitcoin isn't that fast anymore. And unfortunately paying more
+than any other system in the world to transfer your money just isn't going 
+to cut it. Recent bitcoin fees make options like writing a check and sending
+it via 1st class mail to someone both faster and cheaper than bitcoin in some
+scenarios and that's absolutely ridiculous! So you need to send a cheaper
+transaction.
+</p>
+<p>
+Percy will take your transaction (provided it can see it in the mempool), 
+store it and rebroadcast it every 6 hours (subject to change) until it either
+confirms or becomes invalid (say if you spend the outputs elsewhere). 
+</p>
+<p>
+Assuming no funny buisness, this will make your transaction persistent.
+Not fully persistent by any stretch of the imagination, but persisten enough.
+If you know your customer and can trust them to not attempt to double spend on
+you. You can use this tool to accept no-confirmation transactions, provided
+you're willing to wait and you're willing to take the risk of a double spend.
+If you sent the transaction (maybe your reorganizing your wallet or paying
+a friend). You can use this tool to ensure your transaction goes through.
+</p>
+<p>
+I hope everyone finds this tool to be useful in these constrained times.
+If you like what I'm doing and support it. Please donate to one of the following
+addresses below: 
+<ul>
+<li> BTC : 12UXEdrVpz6uppEiVT27miizbixLpUWgnE </li>
+<li> ETH : 0xBfA0136EF1D24e70aa967e895959c06999A80c66 </li>
+<li> LTC : LMCyBS4XLZpV25uVAH97H2rxs9xBARB5RN </li>
+</ul>
+</p>
+<p>
+Also I take Pull Requests! This is a pretty bare boned thing atm, it could
+really use some more love.
+</p>
+{% include 'footer.html.jinja' %}
+</body>
+</html> 
