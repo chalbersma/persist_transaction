@@ -29,13 +29,14 @@ def display_addtx_results(txid=None, method=None):
 			addtx_results_data = requests.get(this_endpoint).content
 		except Exception as e:
 			print(str(e))
-			
-		stringified = addtx_results_data.decode('utf-8')
-		print(stringified)
-		sanitized = json.loads(stringified)
-		print(sanitized)
-		if "error" in sanitized.keys() : 
-			error = True 
+			error=True
+		else : 
+			stringified = addtx_results_data.decode('utf-8')
+			print(stringified)
+			sanitized = json.loads(stringified)
+			print(sanitized)
+			if "error" in sanitized.keys() : 
+				error = True 
 	else :
 		sanitized = { "Error" : True }
 		error = True

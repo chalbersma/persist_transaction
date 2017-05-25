@@ -108,3 +108,5 @@
 		sudo systemctl restart apache2
 		
 	* Right now the system is listening on a self signed certificate. You should use something like [let's encrypt](https://letsencrypt.org/) if you want your service to be publicly available.
+	
+	* Optionally you can put in an apache http->https redirect or you can use the redirect example page in `/opt/persist_transaction/setup/index.html` to redirect to the proper place. (Please note that you'll need to change the hostname).
