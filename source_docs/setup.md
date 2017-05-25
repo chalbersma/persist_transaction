@@ -16,7 +16,7 @@
 	
 * Install Electrum and Mysql
 
-	sudo apt install mariadb-server mariadb-client python3 python-qt4 python-pip python-slowaes python3-pip python3-virtualenv python-virtualenv apache ssl-cert
+	sudo apt install mariadb-server mariadb-client python3 python-qt4 python-pip python-slowaes python3-pip python3-virtualenv python-virtualenv apache2 ssl-cert logrotate
 	
 	* Be Sure to Setup a Mariadb Root Password
 	
@@ -39,7 +39,7 @@
 	cd /var/percy/electrum
 	source bin/activate
 	electrum create
-	# Enter Password
+	# Enter Password But never use this wallet for funds!
 	electrum daemon start # Test daemon starts
 	electrum daemon stop # Test Daemon stop
 	
@@ -51,7 +51,7 @@
 	
 * Setup MariaDB Schema & User
 
-	* Run the commands in `setup.sql`. Be sure to change the `persist@localhost` username to a random one of your choice.
+	* Run the commands in `setup.sql`. Be sure to change the `persist@localhost` password to a random one of your choice.
 
 * Setup the config file for persistent_transactions change `config.ini` be sure to set the database password
 
@@ -63,7 +63,7 @@
 	su - 
 	virtualenv -p python3 /opt/persist_transaction
 	source /opt/persist_transaction/bin/activate
-	pip3 install flask flask_cors pymysql
+	pip3 install flask flask_cors pymysql requests
 	
 * Add an alias to `/opt/persist_transaction/bin/activate` (Preferably at the end of the file)
 
@@ -90,8 +90,6 @@
 * Install Log File Rotate Script
 
 	sudo cp /opt/persist_transaction/setup/logrotate.d/persist_transaction.conf /etc/logrotate.d/persist_transaction.conf
-	sudo systemctl start logrotate
-	sudo systemctl enable logrotate
 
 * Install Apache For Forwarding
 
@@ -108,3 +106,5 @@
 		sudo cp /opt/persist_transaction/setup/percy_flask.conf /etc/apache2/sites-available/
 		sudo a2ensite percy_flask
 		sudo systemctl restart apache2
+		
+	* Right now the system is listening on a self signed certificate. You should use something like [let's encrypt](https://letsencrypt.org/) if you want your service to be publicly available.
