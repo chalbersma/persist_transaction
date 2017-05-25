@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>
+		Percy
+	</title>
+</head>
+<body>
+{% include 'head.html.jinja' %}
+<h1>What to Do if You're Transaction is Stuck</h1>
+<h2>Before Transacting</h2>
+<p>
+If you're here you might be wondering what you should do to get your transaction
+stuck. Well you've got a few options. Note that this guide does not help you
+decide what fee you should use on your transaction before sending it. For that
+there are a number of guides available. But I would suggest using one of these
+tools to estimate a fee : 
+<ul> 
+	<li><a href="https://bitcoinfees.21.co/">21.co Bitcoin Fee Esitmator</a></li>
+	<li><a href="https://bitcoinfees.github.io/">Feesum Historical Fees</a></li>
+	<li><a href="https://estimatefee.appspot.com/">@RCasatta Fee Estimator</a></li>
+</ul>
+
+There are plenty of other but the most important thing to remember is that, <i>There
+is no "right" fee</i>.  Yes this is some bullshit. But the truth is that even if the
+people who wanted to take your money wanted to set a consistent price they just could
+not. 
+</p>
+<h2>After Transacting</h2>
+<p>There is no right fee. If you use bitcoin eventually you will experience either 
+a continuous stream of Western Union-esqe fees (in which case why use bitcoin?) 
+or the occasional romp through the Fee Market Shit Sandwitch (Copyright Blockstream).
+So you have a few options for what to do to resolve the situation.
+</p>
+<h3>Option 1: Go Elsewhere</h3>
+<p>
+So you transaction is taking a while. The first thing you need to decide is, "Is it worth
+it?" It pains me but there are other options. Ethereum, Monero, Litecoin
+the list cryptos that can actually send your transaction is almost endless.
+Hell even Dodge can send your transaction better than bitcoin about 30%
+of the time. And there are always non-crypto means to transfer money (Paypal,
+Dwolla etc...). If you can afford to wait for your transaction to "fall out"
+of the mempool; or if you're the reciever of the transaction and you are
+willing to refund transactions should something go wrong. You may wish to
+coordinate with your counter party and arrange an alternative form of payment.
+</p>
+<p>
+Especially if you are the sender. <b>Choosing this option can make you vulnerable
+to a rebroadcast attack.</b> Someone can save your transaction and rebroadcast it
+at a later date (say after larger blocks have been activated). Best practice is
+to spend at least one of your outputs in a future transaction that way
+this transaction is invalidated.
+</p>
+<h3>Option 2: Pay More</h3>
+<p>
+I'm not going to go into super deep detail on these. But three options exist
+Child Pays for Parent (or CPFP) and RBF are the more palatable options
+(see them described well 
+<a href="https://hackernoon.com/holy-cow-i-sent-a-bitcoin-transaction-with-too-low-fees-are-my-coins-lost-forever-7a865e2e45ba">
+here</a>. However there exist services like this 
+<a href="https://pushtx.btc.com/#/">Transaction Accelerator</a> that let 
+you pay more (using non-bitcoin means) to push your transaction to the 
+top of the wait list.
+</p>
+<p>
+The downside here is pretty obvious, you pay more than you already paid. 
+And there's no real guarentee that these methods will continue to be 
+reliable into the future.
+</p>
+<h3>Option 3: Wait (This Option)</h3>
+<p>
+So you can always wait. Now you should consider submitting your transaction
+to ViaBTC's <a href="https://www.viabtc.com/tools/txaccelerator/">transaction
+accelerator.</a> If accepted (as there is a limitied amount of reserved
+space per block), it will make it into the next Block ViaBTC mines. So
+here is where using Percy might make sense. If you can afford to wait and
+your okay with me trying to resubmit your transaction far into the future
+go ahead and submit it to Percy. There are some limits but none I expect
+to hit. What I'll do is store your transaction and periodically attempt
+resbmission to the network every so often (right now 6 hours). This should
+keep your transaction in the mempool and available to be confirmed until
+it finally confirms. 
+</p>
+<p>
+ViaBTC's transaction accelerator really has no downside. Go ahead and use
+it. However Percy does. Right now I don't have a good way to remove transactions
+if you should change your mind. So you'll need to hit me up and ask me to
+manually remove the transaction for now. I'd suggest talking to me via 
+<a href="https://keybase.io/chalbersma">keybase</a> for now. And I might
+start up a different support method if the future makes it make sense.
+</p>
+
+<h3>Summary</h3>
+<p>
+Not really a lot of good options. If you know of better ones please, please
+let me know and submit a pull request with the improved information! Until
+then attempt to minimize your bitcoin usage until the blocksize is increased.
+Sorry in advanced for the problems and hope it works out for you. Best of
+Luck!
+</p>
+{% include 'footer.html.jinja' %}
+</body>
+</html> 

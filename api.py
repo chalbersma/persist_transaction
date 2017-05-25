@@ -122,6 +122,8 @@ def ui(CONFIG, FDEBUG):
 	from display import d_addtx
 	from display import d_addtx_results
 	from display import d_watchtx_results
+	from display import d_why
+	from display import d_howto
 	
 	# Register Display Blueprints
 	app.register_blueprint(d_txid.Dtxid, url_prefix="/display")
@@ -133,7 +135,8 @@ def ui(CONFIG, FDEBUG):
 	app.register_blueprint(d_addtx.Daddtx, url_prefix="/display")
 	app.register_blueprint(d_addtx_results.Daddtx_results, url_prefix="/display")
 	app.register_blueprint(d_watchtx_results.Dwatchtx_results, url_prefix="/display")
-
+	app.register_blueprint(d_why.Dwhy, url_prefix="/display")
+	app.register_blueprint(d_howto.Dhowto, url_prefix="/display")
 
 	@app.route("/")
 	def index():
