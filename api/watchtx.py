@@ -91,7 +91,7 @@ def api_watchtx(txid=None, email=None):
 			g.cur.execute(grabtxid)
 			dbtxid = g.cur.fetchone()
 			if dbtxid == None : 
-				raise Exception "No Transaction ID Found in Database. Please Add Transaction.")
+				raise Exception("No Transaction ID Found in Database. Please Add Transaction.")
 		except Exception as e :
 			error = True
 			root_error_dict["error"] = "Error with grabbing transactions: " + str(e)
