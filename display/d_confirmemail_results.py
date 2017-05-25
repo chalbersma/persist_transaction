@@ -41,6 +41,6 @@ def display_confirmemail_results(emailid=None, confirmstring=None):
 		sanitized = { "Error" : True }
 		error = True
 	
-	return render_template('display/Daddemail_results.html.jinja', error=error, results=sanitized )
+	return render_template('display/Dconfirmemail_results.html.jinja', error=error, results=sanitized )
 
 
