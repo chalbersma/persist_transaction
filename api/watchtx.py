@@ -88,10 +88,12 @@ def api_watchtx(txid=None, email=None):
 			emailid = g.cur.fetchone()
 			if emailid == None : 
 				raise Exception("No Email ID Found. Please Add Email.")
+				root_error_dict["invalid_email"] = True
 			g.cur.execute(grabtxid)
 			dbtxid = g.cur.fetchone()
 			if dbtxid == None : 
 				raise Exception("No Transaction ID Found in Database. Please Add Transaction.")
+				root_error_dict["invalid_transaction"] = True
 		except Exception as e :
 			error = True
 			root_error_dict["error"] = "Error with grabbing transactions: " + str(e)
