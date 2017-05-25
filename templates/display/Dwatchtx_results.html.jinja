@@ -17,9 +17,6 @@
 {% else -%}
 {% if results["error"]["invalid_email"] == True %}
 <p>Error adding your email to transaction. Maybe you haven't <a href="/display/Daddemail/">added your email to our system.</a></p>
-{% else -%}
-<p>Error adding watch transaction.</p>
-{% endif -%}
 {% endif -%}
 
 {% include 'footer.html.jinja' %}
