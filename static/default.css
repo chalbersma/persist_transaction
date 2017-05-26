@@ -8,6 +8,13 @@ body {
   font-family: "Ubuntu", Helvetica, Arial, sans-serif;
 }
 
+@media screen and (max-width: 768px) {
+  body {
+		padding: 0px;
+		font-size: 10px;
+	}
+}
+
 body header {
   background-color: #fff; e6e6e6
   border-style: solid; 
