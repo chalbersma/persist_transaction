@@ -65,7 +65,7 @@ def api_txid(txid=None, dbid=None):
 		root_error_dict["inputerrors"] = "Given values do not make sense"
 	
 	if do_query == True :
-		get_transaction_query = " SELECT * FROM trked_trans where " + where_string 
+		get_transaction_query = " SELECT id, txid, firstSeen, lastchecked, active, hextx FROM trked_trans where " + where_string 
 		print(get_transaction_query)
 		
 		try:

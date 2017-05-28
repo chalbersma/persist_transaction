@@ -29,6 +29,7 @@ import time
 import subprocess
 from strans import strans
 import subprocess
+import uuid
 
 
 addtrans = Blueprint('api_addtrans', __name__)

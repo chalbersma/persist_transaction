@@ -11,16 +11,23 @@ CREATE TABLE `trked_trans` (
 	`lastchecked` TIMESTAMP NOT NULL default '0000-00-00 00:00:00' on UPDATE CURRENT_TIMESTAMP,
 	`active` BOOLEAN NOT NULL,
 	`hextx` TEXT NOT NULL,
+	`deletestring` VARCHAR(64) NOT NULL default "none",
 	PRIMARY KEY (`id`)
 );
+
+; Alter for Confirm String
+; alter table `trked_trans` add deletestring VARCHAR(64) NOT NULL DEFAULT "none";
 
 CREATE TABLE `attempts` (
 	`atid` INT UNSIGNED NOT NULL AUTO_INCREMENT,
 	`fk_trked_trans_id` INT UNSIGNED NOT NULL REFERENCES trked_trans(id),
 	`checkdate` TIMESTAMP NOT NULL default CURRENT_TIMESTAMP,
-	`result` ENUM('resubmit', 'invalid', 'confirmed'), 
+	`result` ENUM('resubmit', 'invalid', 'confirmed', 'retirement'), 
 	PRIMARY KEY (`atid`)
 );
+
+; Alter for `attempts`
+; alter table `attempts` MODIFY COLUMN `result` ENUM('resubmit', 'invalid', 'confirmed', 'retirement') ; 
 
 CREATE TABLE `emails` (
 	`emailid` INT UNSIGNED NOT NULL AUTO_INCREMENT,

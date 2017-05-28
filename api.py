@@ -100,6 +100,7 @@ def ui(CONFIG, FDEBUG):
 	from api import addcontact
 	from api import confirmemail
 	from api import watchtx
+	from api import removetx
 	
 	# Register API Blueprints for Version 2
 	app.register_blueprint(root.root, url_prefix=config_items["api"]["application_prefix"])
@@ -111,6 +112,7 @@ def ui(CONFIG, FDEBUG):
 	app.register_blueprint(addcontact.addcontact, url_prefix=config_items["api"]["application_prefix"])
 	app.register_blueprint(confirmemail.confirmemail, url_prefix=config_items["api"]["application_prefix"])
 	app.register_blueprint(watchtx.watchtx, url_prefix=config_items["api"]["application_prefix"])
+	app.register_blueprint(removetx.removetx, url_prefix=config_items["api"]["application_prefix"])
 	
 	## Display Imports
 	from display import d_txid
@@ -124,6 +126,7 @@ def ui(CONFIG, FDEBUG):
 	from display import d_watchtx_results
 	from display import d_why
 	from display import d_howto
+	from display import d_removetx_results
 	
 	# Register Display Blueprints
 	app.register_blueprint(d_txid.Dtxid, url_prefix="/display")
@@ -137,6 +140,7 @@ def ui(CONFIG, FDEBUG):
 	app.register_blueprint(d_watchtx_results.Dwatchtx_results, url_prefix="/display")
 	app.register_blueprint(d_why.Dwhy, url_prefix="/display")
 	app.register_blueprint(d_howto.Dhowto, url_prefix="/display")
+	app.register_blueprint(d_removetx_results.Dremovetx_results, url_prefix="/display")
 
 	@app.route("/")
 	def index():

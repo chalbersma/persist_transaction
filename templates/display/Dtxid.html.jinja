@@ -69,11 +69,17 @@
 	<h2>Watch Transaction</h2>
 	<form name="watchtx" action="/display/Dwatchtx_results/?txid={{ data["data"]["info"]["txid"] }}", method="post">
 		Your Email : 
-		<input type="email" name="email">
+		<input type="text" name="email">
 		<input type="submit" value="add">
 	</form>
   <h2>External References</h2>
 	<p>View on <a href='https://blockchain.info/tx/{{ data["data"]["info"]["txid"] }}'>Blockchain.info Block Explorer</a></p>
+	<h2>Remove Transaction</h2>
+	<form name="removetx" action="/display/Dremovetx_results/?txid={{ data["data"]["info"]["txid"] }}", method="post">
+		Remove String
+		<input type="text" name="confirmstring">
+		<input type="submit" value="add">
+	</form>
 {% else %}
   <h2>Untracked Transaction</h2>
 	<p>Transaction Not Found.</p>

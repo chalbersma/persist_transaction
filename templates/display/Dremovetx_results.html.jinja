@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>
+		Percy
+	</title>
+</head>
+<body>
+{% include 'head.html.jinja' %}
+
+<h2>Remove TX Results</h2>
+
+{% if error == False -%}
+
+<p>Transaction removed Successfully. <a href=/display/Dtxid/{{ txid }}>View it's status here.</a></p>
+
+{% else -%}
+<p>Error removing transaction.</p>
+{% if results["error"]["mismatch_confirm_string"] == True %}
+<p>Confirmation String Mismatch. Doublecheck your string.</p>
+{% elif results["error"]["no_transaction"] == True %}
+<p>Unkown or Inactive Transaction. (Maybe it's already been retired?)</p>
+{% else %}
+<p>Remove didn't work (probably). Shit might be broken.</p>
+{% endif %}
+{% endif -%}
+
+{% include 'footer.html.jinja' %}
+
+</body>
+</html> 

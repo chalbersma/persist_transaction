@@ -6,6 +6,7 @@ import json
 import pymysql
 import smtplib
 from email.mime.text import MIMEText
+import uuid
 
 
 # Simple Transaction Class
@@ -204,15 +205,17 @@ class strans:
 		
 		return_dict = dict()
 		
+		delete_string = str(uuid.uuid4())
 		
-		values_to_insert = (self.txid, True, self.txhex)
-		add_transaction_string = "INSERT into trked_trans (txid, active, hextx) VALUES( %s, %s, %s ) ;"
+		values_to_insert = (self.txid, True, self.txhex, delete_string)
+		add_transaction_string = "INSERT into trked_trans (txid, active, hextx, deletestring) VALUES( %s, %s, %s, %s ) ;"
 		
 		try:
 			dbconn.execute(add_transaction_string, values_to_insert)
 			return_dict["insert_id"] = dbconn.lastrowid
 			self.dbid = int(return_dict["insert_id"])
 			return_dict["success"] = True
+			return_dict["delete_string"] = delete_string
 		except pymysql.IntegrityError as e :
 			return_dict["success"] = False
 			return_dict["failure_message"] = "Integrity Error (Transaction probably already in system)"
