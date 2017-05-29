@@ -16,7 +16,7 @@
 	
 * Install Electrum and Mysql
 
-	sudo apt install mariadb-server mariadb-client python3 python-qt4 python-pip python-slowaes python3-pip python3-virtualenv python-virtualenv apache2 ssl-cert logrotate
+	sudo apt install mariadb-server mariadb-client python3 python-qt4 python-pip python-slowaes python3-pip python3-virtualenv python-virtualenv apache2 ssl-cert logrotate python3-pymysql
 	
 	* Be Sure to Setup a Mariadb Root Password
 	
