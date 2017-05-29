@@ -23,7 +23,7 @@ Usage:
 		warn = int(args_list[0])
 		crit = int(args_list[1])
 	
-	print(warn, crit)
+	#print(warn, crit)
 	
 	total_transactions_query = "select count(*) as count from trked_trans where active = true ;"
 	

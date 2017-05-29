@@ -1,0 +1,17 @@
+[default]
+
+name="Persistent Transactions"
+
+[electrum]
+
+# Not currently used in checks but for the future.
+electrum_command="/var/percy/electrum/bin/electrum"
+
+[db]
+
+dbhostname="localhost"
+dbport=3306
+dbuser="persist_perf"
+dbpassword="yerotherpassword"
+dbname="longtrans"
+

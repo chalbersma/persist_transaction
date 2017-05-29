@@ -51,3 +51,7 @@ grant insert, update, select, delete on longtrans.attempts to 'persist'@'localho
 grant insert, update, select, delete on longtrans.trked_trans to 'persist'@'localhost';
 grant insert, update, select, delete on longtrans.emails to 'persist'@'localhost';
 grant insert, update, select, delete on longtrans.notify_lookup to 'persist'@'localhost';
+
+create user 'persist_perf'@'localhost' identified by 'yerotherpassword';
+grant select on longtrans.attempts to 'persist_perf'@'localhost';
+grant select on longtrans.trked_trans to 'persist_perf'@'localhost';
