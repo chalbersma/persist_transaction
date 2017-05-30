@@ -10,13 +10,15 @@ CREATE TABLE `trked_trans` (
 	`firstSeen` TIMESTAMP NOT NULL default CURRENT_TIMESTAMP,
 	`lastchecked` TIMESTAMP NOT NULL default '0000-00-00 00:00:00' on UPDATE CURRENT_TIMESTAMP,
 	`active` BOOLEAN NOT NULL,
-	`hextx` TEXT NOT NULL,
+	`hextx` MEDIUMTEXT NOT NULL,
 	`deletestring` VARCHAR(64) NOT NULL default "none",
 	PRIMARY KEY (`id`)
 );
 
 ; Alter for Confirm String
 ; alter table `trked_trans` add deletestring VARCHAR(64) NOT NULL DEFAULT "none";
+; Alter for hextx
+; alter table trked_trans modify column hextx MEDIUMTEXT NOT NULL ;
 
 CREATE TABLE `attempts` (
 	`atid` INT UNSIGNED NOT NULL AUTO_INCREMENT,
