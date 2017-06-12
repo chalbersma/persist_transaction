@@ -34,6 +34,8 @@ Usage:
 	else:
 		query_results = db_cur.fetchone()
 		avg_size = query_results["size"]
+		if avg_size == None : 
+			avg_size = 0
 		if avg_size > crit : 
 			response_string = "CRITICAL: Size of Transactions : " + str(round(avg_size,2)) + "KB"
 			response_code = 2

@@ -48,12 +48,23 @@ CREATE TABLE `notify_lookup` (
 
 create unique index notifyLookup_txemail on notify_lookup(fk_trked_trans_id, fk_emailid);
 
+CREATE TABLE `decoded_txs` (
+	`decoded_id` INT UNSIGNED NOT NULL AUTO_INCREMENT,
+	`tk_trked_trans_id` INT UNSIGNED NOT NULL REFERENCES trked_trans(id),
+	`fees` INT UNSIGNED NOT NULL AUTO_INCREMENT,
+	`decoded` MEDIUMTEXT NOT NULL,
+	PRIMARY KEY(`decoded_id`)
+);
+
 create user 'persist'@'localhost' identified by 'yerpassword';
 grant insert, update, select, delete on longtrans.attempts to 'persist'@'localhost';
 grant insert, update, select, delete on longtrans.trked_trans to 'persist'@'localhost';
 grant insert, update, select, delete on longtrans.emails to 'persist'@'localhost';
 grant insert, update, select, delete on longtrans.notify_lookup to 'persist'@'localhost';
+grant insert, update, select, delete on longtrans.decoded_txs to 'persist'@'localhost';
+
 
 create user 'persist_perf'@'localhost' identified by 'yerotherpassword';
 grant select on longtrans.attempts to 'persist_perf'@'localhost';
 grant select on longtrans.trked_trans to 'persist_perf'@'localhost';
+grant select on longtrans.decoded_txs to 'persist_perf'@'localhost';
