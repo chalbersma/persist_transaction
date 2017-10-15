@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -x
+
 # Install Electrum Dependencies
 sudo apt-get install python-qt4 python-pip
 
