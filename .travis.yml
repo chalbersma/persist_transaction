@@ -8,10 +8,12 @@ python:
 
 before_install:
   - echo "Test"
+  - echo "$(python -V)"
 
 install:
   - pip install requests
   - pip install flask
+  - pip install electrum
 
 script:
   - true
