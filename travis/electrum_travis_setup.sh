@@ -6,11 +6,13 @@ sudo apt-get install python-qt4 python-pip
 # Install Electrum
 sudo pip2 install ./travis/sources/Electrum-2.9.3.tar.gz
 
-# Create a Blank wallet
-electrum create
-
 # Start Electrum Daemon
-electrum -w ./travis/shitty_test_wallet daemon start
+electrum -w ./travis/electrum/shitty_test_wallet daemon start
+
+	# Note, the above uses a test wallet. That wallet
+	# is not secure. Do not send transactions to addresses
+	# in this wallet. Expect this wallet to be compromised
+	# by default.
 
 # Check to see if Electrum is doing it's thing righ
 electrum is_synchronized
