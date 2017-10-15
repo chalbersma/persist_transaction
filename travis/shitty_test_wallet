@@ -1,0 +1,43 @@
+{
+    "addresses": {
+        "change": [
+            "1BU5c5C5tuPfp2cuUkHRSdH7M17RVUSbKM", 
+            "19HpTaswdBUVua7eErD51x76WhSi6ezRrZ", 
+            "1KGYQw34DELmbNZqoYjXz6SibDJaJyYwpq", 
+            "1HNkPLgUmvUfBcgVThP2snn9PxtSYYUSp6", 
+            "1CWBRBubVq1XiPbycu4ZJ6BJ8eUdyutzGx", 
+            "1PrpN61P9GhJA7R2zNo4718bKgtm7owuAD"
+        ], 
+        "receiving": [
+            "15zDBJ42rDyrWhi9vzTffEr9qXqRhDeRn7", 
+            "15uRhodZySpPvRkc8cjQnuvJ6NQjPNpZpb", 
+            "1AqKXDoGwdrGW6t6imvK7PVQKsLtrXRR13", 
+            "17oA5URJd4MszxibyQBTo6pJRN9ydzs67o", 
+            "1DwQ1FFQrgTxDK462Pcu4KFzESw4zn86m1", 
+            "19R1hci6LJj4UkLV6h1j7kEw22DLSpwH21", 
+            "133C18Da6sFdgDqzDUM5EkbojA7LmsnThi", 
+            "1BHFxJXFffdmTHnnS1PpdVX2MHZkw2Zfi", 
+            "12rdCTU9aJmfRRB7KJWDFVsx2wg72fg5NR", 
+            "1nmqWj5TX4CEY4TXr6BRT3VDLHHrmosqB", 
+            "148DACqAkrW6ruCVEyhFQAZzAc93ogDsSz", 
+            "1DsLDtVFroKomb9jvqSJnFUVEVAoNQXVuR", 
+            "1CGwuu4jETLXZacGxDPNX6S2zpKWJK1umV", 
+            "1PiFqxDrU4L7dvyPwz6kcd2do8Gtty1iM5", 
+            "1NyVPbNPcvbA7VEMU4HFPWZP6qff8EidVD", 
+            "17csnzfb4618KBmJqpPyGg8WLWgujiceLz", 
+            "1CKi594Kg6sLNsNae2zaz3ybjZjHNkF5v2", 
+            "1N3w9Bo4n3p8NDMv4hGE3HZFVJ3vWoi2eH", 
+            "1NXFJEwZASrwQhc2RuGnVs6QfDCsMQqPFf", 
+            "1KZYs78jeqQ3rBe9qCvsngLqSWZ9JKkfkG"
+        ]
+    }, 
+    "keystore": {
+        "seed": "monster holiday nephew culture already dash gap kiss crowd shop noodle side", 
+        "type": "bip32", 
+        "xprv": "xprv9s21ZrQH143K2EFP6zJAx7fg12rrUKDLMX3kP2gv3Ed5Fj2GQaQA1V9gxbeG6qC8doL84nw5BiT2U6bWKdD6hQEJwv1Zoas5DDK2kD2SVTa", 
+        "xpub": "xpub661MyMwAqRbcEiKrD1qBKFcQZ4hLsmwBijyMBR6XbaA48XMQx7iQZHUAorCeD6nyexqfFES1atVR8FQzMbfrbwm9X9dosYHmq62t1jBMxTN"
+    }, 
+    "seed_version": 13, 
+    "use_encryption": false, 
+    "wallet_type": "standard"
+}
