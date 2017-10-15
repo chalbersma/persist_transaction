@@ -3,8 +3,7 @@
 
 language: python
 
-sudo: 
-  - required
+sudo: required
 
 python:
   - "3.5"
