@@ -1,5 +1,17 @@
 # Travis Build File for Percy
 #
 
+language: python
+
+python:
+  - "3.5"
+
 before_install:
   - echo "Test"
+
+install:
+  - pip install requests
+  - pip install flask
+
+script:
+  - true
