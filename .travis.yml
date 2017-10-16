@@ -8,6 +8,9 @@ sudo: required
 python:
   - "3.5"
 
+addons:
+  mariadb: 10.0
+
 before_install:
   - echo "Test"
   - echo "$(python -V)"
@@ -16,6 +19,8 @@ install:
   - pip install requests
   - pip install flask
   - ./travis/electrum_travis_setup.sh
+  - ./travis/mariadb_travis_setup.sh
+
 
 script:
   - true
