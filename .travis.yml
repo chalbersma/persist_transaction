@@ -18,6 +18,8 @@ before_install:
 install:
   - pip install requests
   - pip install flask
+  - pip install flask_cors
+  - pip install pymysql
   - ./travis/electrum_travis_setup.sh
   - ./travis/mariadb_travis_setup.sh
   - ./travis/percy_api_travis_setup.sh
