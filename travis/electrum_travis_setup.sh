@@ -17,6 +17,10 @@ electrum daemon start
 	# in this wallet. Expect this wallet to be compromised
 	# by default.
 
+# Sleep 2:00 minutes and allow electrum to connect to the
+# network
+sleep 60
+
 # Check to see if Electrum is doing it's thing righ
 if [[ "$(electrum daemon status | jq '.connected')" == "true" ]] ; then
 	# Electrum Connected Successfully
