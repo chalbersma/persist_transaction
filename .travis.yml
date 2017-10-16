@@ -25,4 +25,4 @@ install:
   - ./travis/percy_api_travis_setup.sh
 
 script:
-  - true
+  - ./travis/do_ps_tests.py
