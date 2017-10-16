@@ -1,4 +1,4 @@
-; Create Database
+# Create Main Database
 
 create database longtrans;
 
@@ -15,10 +15,10 @@ CREATE TABLE `trked_trans` (
 	PRIMARY KEY (`id`)
 );
 
-; Alter for Confirm String
-; alter table `trked_trans` add deletestring VARCHAR(64) NOT NULL DEFAULT "none";
-; Alter for hextx
-; alter table trked_trans modify column hextx MEDIUMTEXT NOT NULL ;
+# Alter for Confirm String
+# alter table `trked_trans` add deletestring VARCHAR(64) NOT NULL DEFAULT "none";
+# Alter for hextx
+# alter table trked_trans modify column hextx MEDIUMTEXT NOT NULL ;
 
 CREATE TABLE `attempts` (
 	`atid` INT UNSIGNED NOT NULL AUTO_INCREMENT,
@@ -28,8 +28,8 @@ CREATE TABLE `attempts` (
 	PRIMARY KEY (`atid`)
 );
 
-; Alter for `attempts`
-; alter table `attempts` MODIFY COLUMN `result` ENUM('resubmit', 'invalid', 'confirmed', 'retirement') ; 
+# Alter for `attempts`
+# alter table `attempts` MODIFY COLUMN `result` ENUM('resubmit', 'invalid', 'confirmed', 'retirement') ; 
 
 CREATE TABLE `emails` (
 	`emailid` INT UNSIGNED NOT NULL AUTO_INCREMENT,
