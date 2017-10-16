@@ -21,6 +21,5 @@ install:
   - ./travis/electrum_travis_setup.sh
   - ./travis/mariadb_travis_setup.sh
 
-
 script:
   - true
