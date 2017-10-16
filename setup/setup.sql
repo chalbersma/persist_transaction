@@ -51,7 +51,7 @@ create unique index notifyLookup_txemail on notify_lookup(fk_trked_trans_id, fk_
 CREATE TABLE `decoded_txs` (
 	`decoded_id` INT UNSIGNED NOT NULL AUTO_INCREMENT,
 	`tk_trked_trans_id` INT UNSIGNED NOT NULL REFERENCES trked_trans(id),
-	`fees` INT UNSIGNED NOT NULL AUTO_INCREMENT,
+	`fees` INT UNSIGNED NOT NULL,
 	`decoded` MEDIUMTEXT NOT NULL,
 	PRIMARY KEY(`decoded_id`)
 );
