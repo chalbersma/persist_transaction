@@ -20,6 +20,7 @@ install:
   - pip install flask
   - ./travis/electrum_travis_setup.sh
   - ./travis/mariadb_travis_setup.sh
+  - ./travis/percy_api_travis_setup.sh
 
 script:
   - true
