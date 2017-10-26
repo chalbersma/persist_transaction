@@ -23,6 +23,7 @@ install:
   - ./travis/electrum_travis_setup.sh
   - ./travis/mariadb_travis_setup.sh
   - ./travis/percy_api_travis_setup.sh
+  - ./travis/load_mempool_trans.sh
 
 script:
   - ./travis/do_ps_tests.py
