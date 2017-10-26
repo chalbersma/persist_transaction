@@ -14,6 +14,7 @@ if [[ ${transactions} -gt 0 ]] ; then
 	# It's okay this is what we want
 	echo -e "Load Test Transactions Made it to DB count: ${transactions}"
 else
+	tail -n 20 travis/api.log
 	echo -e "Something wrong with Transactions, not showing up with test transactions count: ${transactions}"
 	exit 1
 fi

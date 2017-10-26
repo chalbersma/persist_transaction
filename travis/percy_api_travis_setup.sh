@@ -1,7 +1,10 @@
 #!/bin/bash
 
+# Log
+touch travis/api.log
+
 # Start API (And send it to background).
-./api.py -c ./travis/config_travis.ini  &
+./api.py -c ./travis/config_travis.ini > travis/api.log  &
 
 api_pid=$!
 
