@@ -12,8 +12,8 @@ transactions=$(echo "select count(*) from trked_trans" | mysql -N longtrans)
 
 if [[ ${transactions} -gt 0 ]] ; then 
 	# It's okay this is what we want
-	echo -e "Load Test Transactions Made it to DB"
+	echo -e "Load Test Transactions Made it to DB count: ${transactions}"
 else
-	echo -e "Something wrong with Transactions, not showing up with test transactions"
+	echo -e "Something wrong with Transactions, not showing up with test transactions count: ${transactions}"
 	exit 1
 fi
