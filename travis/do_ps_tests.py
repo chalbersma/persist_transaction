@@ -7,5 +7,7 @@
 # Process those transactions
 ./process_transactions.py -c ./travis/config_travis.ini -V 
 
+# Test Database Arrival
+
 # API Tests Here : 
 

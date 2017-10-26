@@ -8,3 +8,12 @@ for transaction in $(curl -s https://blockchain.info/unconfirmed-transactions?fo
 done
 
 # Add DB Test Information Here
+transactions=$(echo "select count(*) from trked_trans" | mysql -N longtrans)
+
+if [[ ${transactions} -gt 0 ]] ; then 
+	# It's okay this is what we want
+	echo -e "Load Test Transactions Made it to DB"
+else
+	echo -e "Something wrong with Transactions, not showing up with test transactions"
+	exit 1
+fi
