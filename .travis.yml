@@ -9,7 +9,7 @@ python:
   - "3.5"
 
 addons:
-  mariadb: 10.0
+  mariadb: 10.2
 
 before_install:
   - echo "Test"
